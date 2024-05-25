@@ -7,7 +7,7 @@ int main() {
 
     engine->initialize();
 
-    WEN_ENGINE_CLIENT_INFO("hello world!")
+    WEN_CLIENT_INFO("hello world!")
 
     engine->destroy();
 

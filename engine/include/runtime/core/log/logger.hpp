@@ -44,29 +44,3 @@ extern Logger* client_logger;
 
 #define WEN_CORE_LOG_HELPER(level, ...) core_logger->log(level, "[" + std::string(__FUNCTION__) + "] " + __VA_ARGS__);
 #define WEN_CLIENT_LOG_HELPER(level, ...) client_logger->log(level, "[" + std::string(__FUNCTION__) + "] " + __VA_ARGS__);
-
-#define WEN_ENGINE_CORE_TRACE(...) WEN_CORE_LOG_HELPER(wen::LogLevel::trace, __VA_ARGS__)
-#define WEN_ENGINE_CORE_DEBUG(...) WEN_CORE_LOG_HELPER(wen::LogLevel::debug, __VA_ARGS__)
-#define WEN_ENGINE_CORE_INFO(...)  WEN_CORE_LOG_HELPER(wen::LogLevel::info,  __VA_ARGS__)
-#define WEN_ENGINE_CORE_WARN(...)  WEN_CORE_LOG_HELPER(wen::LogLevel::warn,  __VA_ARGS__)
-#define WEN_ENGINE_CORE_ERROR(...) WEN_CORE_LOG_HELPER(wen::LogLevel::error, __VA_ARGS__)
-#define WEN_ENGINE_CORE_FATAL(...) WEN_CORE_LOG_HELPER(wen::LogLevel::fatal, __VA_ARGS__)
-
-#define WEN_ENGINE_CLIENT_TRACE(...) WEN_CLIENT_LOG_HELPER(wen::LogLevel::trace, __VA_ARGS__)
-#define WEN_ENGINE_CLIENT_DEBUG(...) WEN_CLIENT_LOG_HELPER(wen::LogLevel::debug, __VA_ARGS__)
-#define WEN_ENGINE_CLIENT_INFO(...)  WEN_CLIENT_LOG_HELPER(wen::LogLevel::info,  __VA_ARGS__)
-#define WEN_ENGINE_CLIENT_WARN(...)  WEN_CLIENT_LOG_HELPER(wen::LogLevel::warn,  __VA_ARGS__)
-#define WEN_ENGINE_CLIENT_ERROR(...) WEN_CLIENT_LOG_HELPER(wen::LogLevel::error, __VA_ARGS__)
-#define WEN_ENGINE_CLIENT_FATAL(...) WEN_CLIENT_LOG_HELPER(wen::LogLevel::fatal, __VA_ARGS__)
-
-#define WEN_ENGINE_CORE_ASSERT(x, ...)                               \
-    if (!(x)) {                                                      \
-        WEN_ENGINE_CORE_FATAL("Assertion Failed: {0}", __VA_ARGS__); \
-        std::abort();                                                \
-    }
-
-#define WEN_ENGINE_CLIENT_ASSERT(x, ...)                               \
-    if (!(x)) {                                                        \
-        WEN_ENGINE_CLIENT_FATAL("Assertion Failed: {0}", __VA_ARGS__); \
-        std::abort();                                                  \
-    }
