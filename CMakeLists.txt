@@ -8,6 +8,8 @@ project(
     LANGUAGES CXX C
 )
 
+include(3rdlibs/vulkan.cmake)
+
 add_subdirectory(3rdlibs)
 add_subdirectory(engine)
 

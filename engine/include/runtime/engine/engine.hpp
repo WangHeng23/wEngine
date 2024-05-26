@@ -12,8 +12,8 @@ public:
     WEngine(WEngine&&) = delete;
     ~WEngine() = default;
 
-    void initialize();
-    void destroy();
+    void startEngine();
+    void shutdownEngine();
 };
 
 } // namespace wen

@@ -32,6 +32,12 @@ public:
     T* getInstance() noexcept { return instance_; }
     const T* getInstance() const noexcept { return instance_; }
 
+    T* operator->() noexcept { return instance_; }
+    const T* operator->() const noexcept { return instance_; }
+
+    T& operator*() noexcept { return *instance_; }
+    const T& operator*() const noexcept { return *instance_; }
+
 private:
     T* instance_ = nullptr;
 };

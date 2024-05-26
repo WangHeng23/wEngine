@@ -15,20 +15,15 @@ public:
     void setLevel(const LogLevel& level) const;
 
     template <typename... Args>
-    void log(const LogLevel level, Args&&... args) {
+    void log(const LogLevel level, const std::string_view fmt, Args&&... args) {
+        auto message = fmt::format(fmt::runtime(fmt), std::forward<Args>(args)...);
         switch (level) {
-            case LogLevel::trace:
-                logger_->trace(std::forward<Args>(args)...); break;
-            case LogLevel::debug:
-                logger_->debug(std::forward<Args>(args)...); break;
-            case LogLevel::info:
-                logger_->info(std::forward<Args>(args)...); break;
-            case LogLevel::warn:
-                logger_->warn(std::forward<Args>(args)...); break;
-            case LogLevel::error:
-                logger_->error(std::forward<Args>(args)...); break;
-            case LogLevel::fatal:
-                logger_->critical(std::forward<Args>(args)...); break;
+            case LogLevel::trace: logger_->trace(message); break;
+            case LogLevel::debug: logger_->debug(message); break;
+            case LogLevel::info: logger_->info(message); break;
+            case LogLevel::warn: logger_->warn(message); break;
+            case LogLevel::error: logger_->error(message); break;
+            case LogLevel::fatal: logger_->critical(message); break;
             default: break;
         }
     }
@@ -42,5 +37,5 @@ extern Logger* client_logger;
 
 } // namespace wen
 
-#define WEN_CORE_LOG_HELPER(level, ...) core_logger->log(level, "[" + std::string(__FUNCTION__) + "] " + __VA_ARGS__);
-#define WEN_CLIENT_LOG_HELPER(level, ...) client_logger->log(level, "[" + std::string(__FUNCTION__) + "] " + __VA_ARGS__);
+#define WEN_CORE_LOG_HELPER(level, ...) core_logger->log(level, "[" + std::string(__FILE_NAME__) + ":" + std::to_string(__LINE__) + "] " + __VA_ARGS__);
+#define WEN_CLIENT_LOG_HELPER(level, ...) client_logger->log(level, "[" + std::string(__FILE_NAME__) + ":" + std::to_string(__LINE__) + "] " + __VA_ARGS__);

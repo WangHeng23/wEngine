@@ -1,15 +1,15 @@
 #include "wen.hpp"
 
-using namespace wen;
-
 int main() {
-    auto* engine = new WEngine();
+    auto* engine = new wen::WEngine();
 
-    engine->initialize();
+    engine->startEngine();
 
-    WEN_CLIENT_INFO("hello world!")
+    while (!wen::global_context->window_system->shouldClose()) {
+        wen::global_context->window_system->pollEvents();
+    }
 
-    engine->destroy();
+    engine->shutdownEngine();
 
     return 0;
 }
