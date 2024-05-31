@@ -5,22 +5,17 @@ int main() {
 
     engine->startEngine();
 
-    auto& event_sys = wen::global_context->event_system;
-    event_sys->attach<wen::KeyPressedEvent>([](wen::KeyPressedEvent& event) {
-        WEN_CLIENT_INFO("Key: {}, {}, {}, {}", (char)event.key, event.is_repeat, (int)event.category, (int)event.type)
-        return false;
-    });
-    event_sys->attach<wen::MousePressedEvent>([](wen::MousePressedEvent& event) {
-        WEN_CLIENT_INFO("1. mouse button: {}", event.button)
-        return true;
-    });
-    event_sys->attach<wen::MousePressedEvent>([](wen::MousePressedEvent& event) {
-        WEN_CLIENT_INFO("2. mouse button: {}", event.button)
-        return false;
-    });
+    auto& input_sys = wen::global_context->input_system;
 
     while (!wen::global_context->window_system->shouldClose()) {
         wen::global_context->window_system->pollEvents();
+
+        if (input_sys->isKeyPressed(WEN_KEY_A)) {
+            WEN_CLIENT_INFO("Key A is pressed")
+        }
+        if (input_sys->isMousePressed(WEN_MOUSE_BUTTON_1)) {
+            WEN_CLIENT_INFO("Mouse button 1 is pressed")
+        }
     }
 
     engine->shutdownEngine();
