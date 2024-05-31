@@ -37,5 +37,5 @@ extern Logger* client_logger;
 
 } // namespace wen
 
-#define WEN_CORE_LOG_HELPER(level, ...) core_logger->log(level, "[" + std::string(__FILE_NAME__) + ":" + std::to_string(__LINE__) + "] " + __VA_ARGS__);
-#define WEN_CLIENT_LOG_HELPER(level, ...) client_logger->log(level, "[" + std::string(__FILE_NAME__) + ":" + std::to_string(__LINE__) + "] " + __VA_ARGS__);
+#define WEN_CORE_LOG_HELPER(level, ...) wen::core_logger->log(level, "[" + std::string(__FILE_NAME__) + ":" + std::to_string(__LINE__) + "] " + __VA_ARGS__);
+#define WEN_CLIENT_LOG_HELPER(level, ...) wen::client_logger->log(level, "[" + std::string(__FILE_NAME__) + ":" + std::to_string(__LINE__) + "] " + __VA_ARGS__);

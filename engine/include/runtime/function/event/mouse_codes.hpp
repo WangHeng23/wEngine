@@ -1,0 +1,14 @@
+#pragma once
+
+#define WEN_MOUSE_BUTTON_1         0
+#define WEN_MOUSE_BUTTON_2         1
+#define WEN_MOUSE_BUTTON_3         2
+#define WEN_MOUSE_BUTTON_4         3
+#define WEN_MOUSE_BUTTON_5         4
+#define WEN_MOUSE_BUTTON_6         5
+#define WEN_MOUSE_BUTTON_7         6
+#define WEN_MOUSE_BUTTON_8         7
+#define WEN_MOUSE_BUTTON_LAST      WEN_MOUSE_BUTTON_8
+#define WEN_MOUSE_BUTTON_LEFT      WEN_MOUSE_BUTTON_1
+#define WEN_MOUSE_BUTTON_RIGHT     WEN_MOUSE_BUTTON_2
+#define WEN_MOUSE_BUTTON_MIDDLE    WEN_MOUSE_BUTTON_3

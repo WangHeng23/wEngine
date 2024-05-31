@@ -2,3 +2,4 @@
 .idea
 cmake-build
 cmake-build-debug-mingw
+node.md
